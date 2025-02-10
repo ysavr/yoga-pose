@@ -36,7 +36,23 @@ model.compile(optimizer="adam",
               metrics=["accuracy"])
 
 # ✅ 8. Train the model
-model.fit(X_train, y_train, epochs=50, batch_size=16, validation_data=(X_test, y_test))
+history = model.fit(
+    X_train, 
+    y_train, 
+    epochs=50, 
+    batch_size=16, 
+    validation_data=(X_test, y_test),
+    verbose=1  # This shows the default progress bar with metrics
+)
+
+# Print final epoch metrics
+print("\nTraining Metrics:")
+print(f"Final Training Loss: {history.history['loss'][-1]:.4f}")
+print(f"Final Training Accuracy: {history.history['accuracy'][-1]:.4f}")
+
+print("\nValidation Metrics:")
+print(f"Final Validation Loss: {history.history['val_loss'][-1]:.4f}")
+print(f"Final Validation Accuracy: {history.history['val_accuracy'][-1]:.4f}")
 
 # ✅ 9. Save the trained model
 model.save("pose_classifier_2.h5")
