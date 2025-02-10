@@ -8,10 +8,10 @@ mp_pose = mp.solutions.pose
 pose = mp_pose.Pose(static_image_mode=True, min_detection_confidence=0.5)
 
 # Define dataset folder path
-dataset_folder = os.path.join("..", "data", "images_processed") # Change to your dataset path
+dataset_folder = os.path.join("..", "data", "yoga16_dataset", "train") # Change to your dataset path
 
 # Prepare CSV file for storing data
-csv_file = "pose_landmarks_2.csv"
+csv_file = "yoga16_dataset.csv"
 
 # ✅ Correct column names for 33 landmarks (x, y, z)
 columns = [f"x{i+1}" for i in range(33)] + \
