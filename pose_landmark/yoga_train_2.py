@@ -5,7 +5,7 @@ from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import LabelEncoder, StandardScaler
 
 # ✅ 1. Load the dataset
-df = pd.read_csv("yoga16_dataset.csv")
+df = pd.read_csv("pose_landmarks.csv")
 
 # ✅ 2. Extract features (X) and labels (y)
 X = df.iloc[:, :-1].values  # All columns except 'label'
@@ -56,14 +56,14 @@ print(f"Final Validation Loss: {history.history['val_loss'][-1]:.4f}")
 print(f"Final Validation Accuracy: {history.history['val_accuracy'][-1]:.4f}")
 
 # ✅ 9. Save the trained model
-model.save("yoga16.h5")
+model.save("pose_classifier_3.h5")
 
 # ✅ 10. Convert model to TFLite
 converter = tf.lite.TFLiteConverter.from_keras_model(model)
 tflite_model = converter.convert()
 
 # ✅ Save TFLite model
-with open("yoga16.tflite", "wb") as f:
+with open("pose_classifier_3.tflite", "wb") as f:
     f.write(tflite_model)
 
 print("✅ Model training complete! Saved as pose_classifier.tflite 🎉")

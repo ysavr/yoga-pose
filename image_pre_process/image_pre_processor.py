@@ -18,7 +18,7 @@ class ImagePreprocessor:
         """
         self.input_dir = Path(input_dir)
         self.output_dir = Path(output_dir)
-        self.target_size = (224, 224)
+        self.target_size = (512, 512)
         self.setup_logging()
 
     def setup_logging(self):
@@ -243,8 +243,8 @@ class ImagePreprocessor:
 def main():
     # Example usage
     processor = ImagePreprocessor(
-        input_dir="data/images",
-        output_dir="data/images_processed",
+        input_dir="../data/images",
+        output_dir="../data/images_processed",
     )
     processor.process_directory()
 
